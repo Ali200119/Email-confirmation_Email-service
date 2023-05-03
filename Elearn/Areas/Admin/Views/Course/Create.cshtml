@@ -1,0 +1,53 @@
+﻿@model CourseCreateVM
+
+@{
+    ViewBag.Title = "Create Course";
+}
+
+<div style="margin-left: 40px; margin-top: 40px">
+    <form method="post" asp-area="Admin" asp-controller="Course" asp-action="Create" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload your course images here</label>
+            <input class="form-control" id="formFile" asp-for="Photos">
+            <span class="text-danger" asp-validation-for="Photos"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input type="text" class="form-control" id="Title" asp-for="Title" placeholder="Title">
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input type="text" class="form-control" id="Description" asp-for="Description" placeholder="Description" />
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price"></label>
+            <input type="number" class="form-control" id="Price" asp-for="Price" placeholder="Price">
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Sales"></label>
+            <input class="form-control" id="Sales" asp-for="Sales" placeholder="Sales">
+            <span class="text-danger" asp-validation-for="Sales"></span>
+        </div>
+
+        <select class="form-control" id="customFile" asp-for="AuthorId" asp-items="@ViewBag.Authors">
+            <option selected>Select Author</option>
+        </select>
+        <span class="text-danger" asp-validation-for="AuthorId"></span>
+
+
+        <button type="submit" class="btn btn-primary mt-5">Create</button>
+    </form>
+
+    <a class="btn mt-4" style="color: white;background-color: gray" asp-area="Admin" asp-controller="Course" asp-action="Index">Back</a>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
