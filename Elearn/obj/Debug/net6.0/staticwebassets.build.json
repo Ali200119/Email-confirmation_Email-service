@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pHk4AF6iR9WOwbWwBFj1FF4vss0D9bByrgXNB8u9Gd8=",
+  "Hash": "/GigbEAwLpkdYqaZeXKOBf/NUBQRpHs93u3FkGT/RrQ=",
   "Source": "Elearn",
   "BasePath": "_content/Elearn",
   "Mode": "Default",
@@ -17321,6 +17321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/styles/responsive.css"
+    },
+    {
+      "Identity": "/Users/ali200119/Desktop/Email-confirmation_Email-service/Elearn/wwwroot/templates/VerifyEmail.html",
+      "SourceId": "Elearn",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ali200119/Desktop/Email-confirmation_Email-service/Elearn/wwwroot/",
+      "BasePath": "_content/Elearn",
+      "RelativePath": "templates/VerifyEmail.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/templates/VerifyEmail.html"
     }
   ]
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using Elearn.Data;
+using Elearn.Helpers;
 using Elearn.Models;
+using Elearn.Services;
+using Elearn.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +36,6 @@ builder.Services.Configure<IdentityOptions>(opt =>
     #endregion
 
 
-
     #region Sign In
 
     opt.SignIn.RequireConfirmedEmail = true;
@@ -49,6 +51,11 @@ builder.Services.Configure<IdentityOptions>(opt =>
 
     #endregion
 });
+
+builder.Services.AddScoped<IEmailService, EmailServices>();
+builder.Services.AddScoped<EmailSettings>();
+
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Smtp"));
 
 var app = builder.Build();
 

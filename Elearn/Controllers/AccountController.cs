@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Elearn.Models;
+using Elearn.Services.Interfaces;
 using Elearn.ViewModels.Account;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -17,12 +18,15 @@ namespace Elearn.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IEmailService _emailServer;
 
         public AccountController(UserManager<AppUser> userManager,
-                                 SignInManager<AppUser> signInManager)
+                                 SignInManager<AppUser> signInManager,
+                                 IEmailService emailServer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailServer = emailServer;
         }
 
 
@@ -65,29 +69,33 @@ namespace Elearn.Controllers
             TempData["Email"] = newUser.Email;
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
-
             string link = Url.Action("ConfirmEmail", "Account", new {userId = newUser.Id, token}, Request.Scheme, Request.Host.ToString());
+            string subject = "Email Confirmation";
+            string html;
 
-            // create email message
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("aliit@code.edu.az"));
-            email.To.Add(MailboxAddress.Parse(newUser.Email));
-            email.Subject = "Testing";
-            email.Body = new TextPart(TextFormat.Html) { Text = "<h1>Hi, Ali</h1>" };
+            using (StreamReader reader = new StreamReader("wwwroot/templates/VerifyEmail"))
+            {
+                html = reader.ReadToEnd();
+            }
 
-            // send email
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("aliit@code.edu.az", "kymxjpejiumjxeyc");
-            smtp.Send(email);
-            smtp.Disconnect(true);
+
+            _emailServer.Send(newUser.Email, subject, html);
 
             return RedirectToAction(nameof(VerifyEmail));
         }
 
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
-            return View();
+            if (userId is null || token is null) return BadRequest();
+
+            AppUser user = await _userManager.FindByIdAsync(userId);
+            if (user is null) return NotFound();
+
+            await _userManager.ConfirmEmailAsync(user, token);
+
+            await _signInManager.SignInAsync(user, false);
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

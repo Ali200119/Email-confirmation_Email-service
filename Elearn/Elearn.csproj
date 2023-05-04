@@ -26,6 +26,8 @@
     <None Remove="Helpers\" />
     <None Remove="ViewModels\Account\" />
     <None Remove="Views\Account\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -46,6 +48,9 @@
     <Folder Include="wwwroot\admin\assets\js\" />
     <Folder Include="ViewModels\Account\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="wwwroot\templates\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
@@ -65,5 +70,6 @@
     <Content Remove="wwwroot\admin\" />
     <Content Remove="wwwroot\admin\assets\js\" />
     <Content Remove="wwwroot\admin\js\admin.js" />
+    <Content Remove="wwwroot\templates\" />
   </ItemGroup>
 </Project>
