@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/GigbEAwLpkdYqaZeXKOBf/NUBQRpHs93u3FkGT/RrQ=",
+  "Hash": "WDZVoouhcXFSqrm5Lr7k6kROZ8iyMG1vGvLBISWYnI8=",
   "Source": "Elearn",
   "BasePath": "_content/Elearn",
   "Mode": "Default",
@@ -15043,23 +15043,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/about_1.jpg"
-    },
-    {
-      "Identity": "/Users/ali200119/Desktop/Email-confirmation_Email-service/Elearn/wwwroot/images/cca7bd30-f0ec-4776-af47-25f4154127e8_Marvel's Spider-Man 2 (Venom).jpeg",
-      "SourceId": "Elearn",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/ali200119/Desktop/Email-confirmation_Email-service/Elearn/wwwroot/",
-      "BasePath": "_content/Elearn",
-      "RelativePath": "images/cca7bd30-f0ec-4776-af47-25f4154127e8_Marvel's Spider-Man 2 (Venom).jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/cca7bd30-f0ec-4776-af47-25f4154127e8_Marvel's Spider-Man 2 (Venom).jpeg"
     },
     {
       "Identity": "/Users/ali200119/Desktop/Email-confirmation_Email-service/Elearn/wwwroot/images/course_1.jpg",

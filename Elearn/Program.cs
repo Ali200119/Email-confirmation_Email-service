@@ -52,10 +52,10 @@ builder.Services.Configure<IdentityOptions>(opt =>
     #endregion
 });
 
-builder.Services.AddScoped<IEmailService, EmailServices>();
-builder.Services.AddScoped<EmailSettings>();
+//builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Smtp"));
+builder.Services.AddScoped<IEmailService, EmailServices>();
+//builder.Services.AddScoped<EmailSettings>();
 
 var app = builder.Build();
 

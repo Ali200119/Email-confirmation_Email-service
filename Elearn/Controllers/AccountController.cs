@@ -71,13 +71,15 @@ namespace Elearn.Controllers
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
             string link = Url.Action("ConfirmEmail", "Account", new {userId = newUser.Id, token}, Request.Scheme, Request.Host.ToString());
             string subject = "Email Confirmation";
-            string html;
+            string html = string.Empty;
 
-            using (StreamReader reader = new StreamReader("wwwroot/templates/VerifyEmail"))
+            using (StreamReader reader = new StreamReader("wwwroot/templates/VerifyEmail.html"))
             {
                 html = reader.ReadToEnd();
             }
 
+            html = html.Replace("{{fullname}}", newUser.FullName);
+            html = html.Replace("{{link}}", link);
 
             _emailServer.Send(newUser.Email, subject, html);
 

@@ -11,28 +11,29 @@ namespace Elearn.Services
 	public class EmailServices: IEmailService
 	{
         private readonly IConfiguration _config;
-        private readonly EmailSettings _emailSettings;
+        //private readonly EmailSettings _emailSettings;
 
         public EmailServices(IConfiguration config)
         {
             _config = config;
+            //_emailSettings = emailSettings;
         }
 
 
 
-        public void Send(string to, string subject, string html, string from = null)
+        public void Send(string to, string subject, string html)
         {
             // create email message
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(from ?? _emailSettings.FromAddress));
+            email.From.Add(MailboxAddress.Parse("aliit@code.edu.az"));
             email.To.Add(MailboxAddress.Parse(to));
             email.Subject = subject;
             email.Body = new TextPart(TextFormat.Html) { Text = html };
 
             // send email
             using var smtp = new SmtpClient();
-            smtp.Connect(_emailSettings.Server, _emailSettings.Port, SecureSocketOptions.StartTls);
-            smtp.Authenticate(_emailSettings.Username, _emailSettings.Password);
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("aliit@code.edu.az", "kymxjpejiumjxeyc");
             smtp.Send(email);
             smtp.Disconnect(true);
         }
